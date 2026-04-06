@@ -10,7 +10,7 @@
 */
 
 INSERT INTO MYCLASS
-VALUES (3, '조민석', '010-6466-6586', 'm_i_n_e@naver.com', SYSDATE);
+VALUES (12, '박시영', '010-6466-6586', 'm_i_n_e@naver.com', SYSDATE);
 COMMIT;
 
 SELECT * FROM MYCLASS

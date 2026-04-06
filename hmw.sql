@@ -1,0 +1,3 @@
+INSERT INTO MYCLASS
+VALUES (99, '구경준', 'rudwns@naver.com', '010-9999-9999', SYSDATE);
+COMMIT;

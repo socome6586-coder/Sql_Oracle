@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="hr" id="DDCEB6A0-39CC-2311-5916-F57856E324C5" version="3.5">
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-06 05:37:14 UTC</createdTime>
+<ownerDesignName>hr</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>DDCEB6A0-39CC-2311-5916-F57856E324C5</designId>
+</OSDM_Design>

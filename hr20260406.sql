@@ -41,6 +41,8 @@ WHERE    DEPARTMENT_ID = 50
 ORDER BY FIRST_NAME ASC, LAST_NAME ASC;
 
 -- 부서가 없는 직원을 출력
-SELECT   EMPLOYEE_ID, FIRST_NAME, LAST_NAME, DEPARTMENT_ID
+SELECT   EMPLOYEE_ID                    "사번",
+         FIRST_NAME || ' ' || LAST_NAME "이름",
+         DEPARTMENT_ID                  부서번호
 FROM     EMPLOYEES
-WHERE    DEPARTMENT_ID Is null;
+WHERE    DEPARTMENT_ID Is null; -- = null(작동 안함), is null, is not null 이 있다

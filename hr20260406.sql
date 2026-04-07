@@ -46,3 +46,4 @@ SELECT   EMPLOYEE_ID                    "사번",
          DEPARTMENT_ID                  부서번호
 FROM     EMPLOYEES
 WHERE    DEPARTMENT_ID Is null; -- = null(작동 안함), is null, is not null 이 있다
+

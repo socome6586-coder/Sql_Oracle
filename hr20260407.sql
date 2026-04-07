@@ -282,7 +282,7 @@ SELECT EMPLOYEE_ID 사번,
 FROM   EMPLOYEES
 WHERE  HIRE_DATE = '2012-06-07';
 
--- 13. 오늘 '26/04/07' 입사한 사람
+-- 13. 오늘 '26/04/07' 입사한 사람 OK
 ALTER SESSION SET NLS_DATE_FORMAT='YYYY-MM-DD HH24:MI:SS'; -- 시간 초기화
 SELECT EMPLOYEE_ID 사번,
        FIRST_NAME || ' ' || LAST_NAME 이름,
@@ -293,7 +293,7 @@ FROM   EMPLOYEES
 WHERE TRUNC(HIRE_DATE) = '2026-04-07 00:00:00';
 
 
--- 15. 화요일 입사자를 출력
+-- 화요일 입사자를 출력 OK
 SELECT   EMPLOYEE_ID, 
          FIRST_NAME, 
          LAST_NAME, 
@@ -308,21 +308,21 @@ ORDER BY HIRE_DATE ASC;
 ALTER SESSION SET NLS_DATE_FORMAT='YYYY-MM-DD HH24:MI:SS'; -- 시간 초기화
 SELECT EMPLOYEE_ID 사번,
        FIRST_NAME || ' ' || LAST_NAME 이름,
-       HIRE_DATE 입사일,
+       HIRE_DATE 입사일
 FROM   EMPLOYEES
-WHERE  HIRE_DATE LIKE SYSDATE;
+WHERE TRUNC(HIRE_DATE) = '2026-04-01 00:00:00';
 
 
--- 16. 08월 입사자의 사번, 이름, 입사일을 입사일 순으로
+-- 08월 입사자의 사번, 이름, 입사일을 입사일 순으로 OK
 SELECT   EMPLOYEE_ID 사번,
          FIRST_NAME 성,
          LAST_NAME 이름,
          HIRE_DATE 입사일
 FROM     EMPLOYEES
-WHERE    HIRE_DATE LIKE '%8%'
+WHERE    HIRE_DATE LIKE '______8%'
 ORDER BY HIRE_DATE ASC;
 
--- 17. 부서 번호 80이 아닌 직원
+-- 17. 부서 번호 80이 아닌 직원 OK
 SELECT EMPLOYEE_ID 사번,
        FIRST_NAME || ' ' || LAST_NAME 이름,
        DEPARTMENT_ID 부서
@@ -330,6 +330,11 @@ FROM   EMPLOYEES
 WHERE  DEPARTMENT_ID NOT IN 80;
 
 /* 직원 사번, 입사일 */
+SELECT EMPLOYEE_ID, HIRE_DATE
+FROM   EMPLOYEES;
 
 -- 2026년 74 07일 17시 16분 04초 오후 수요일
 -- 한자로 출력
+ALTER SESSION SET NLS_DATE_FORMAT='YYYY-MM-DD HH24:MI:SS'; -- 시간 초기화
+SELECT TO_CHAR(SYSTIMESTAMP, 'YYYY"年" MM"月" DD"日" HH24"時" MI"分" SS"秒"')
+FROM   DUAL;

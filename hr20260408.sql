@@ -252,17 +252,31 @@ FROM EMPLOYEES; -- 11, COUNT는 NULL을 제외함
 
 -- 직원이 근무하는 부서의 수 : 부서장이 있는 부서 수 : DEPARTMENTS
 SELECT COUNT(DEPARTMENT_ID)
-FROM DEPARTMENTS;
+FROM   DEPARTMENTS
+WHERE  MANAGER_ID IS NOT NULL;
+
+-- 
+SELECT 7 / 2, 
+       ROUND(156.456, 2), ROUND(156.456, -2),
+       TRUNC(156.456, 2), TRUNC(156.456, -2)
+FROM DUAL;
 
 -- 직원 수, 월급 합, 월급 평균, 최대 월급, 최소 월급
-SELECT COUNT(EMPLOYEE_ID) "직원 수",
-       SUM(SALARY)        "월급 합",
-       AVG(SALARY)        "월급 평균",
-       MAX(SALARY)        "최대 월급",
-       MIN(SALARY)        "최소 월급"
+SELECT COUNT(EMPLOYEE_ID)    "직원 수",
+       SUM(SALARY)           "월급 합",
+       ROUND(AVG(SALARY), 3) "월급 평균",
+       MAX(SALARY)           "최대 월급",
+       MIN(SALARY)           "최소 월급"
 FROM   EMPLOYEES;
 
-
+----------------------------------------
+/*
+SQL문의 실행 순서
+1. FROM
+2. WHERE
+3. SELECT
+4. ORDER BY
+*/
 -- 부서 60번 인원 수, 월급 합, 월급 평균
 SELECT COUNT(DEPARTMENT_ID) "인원 수",
        SUM(SALARY)          "월급 합",
@@ -272,8 +286,17 @@ WHERE  DEPARTMENT_ID = 60;
 
 
 -- 부서 50, 60, 80번 부서가 아닌 인원 수, 월급 합, 월급 평균
-SELECT COUNT(DEPARTMENT_ID) "인원 수",
-       SUM(SALARY)          "월급 합",
-       AVG(SALARY)          "월급 평균"
+SELECT COUNT(DEPARTMENT_ID)  "인원 수",
+       SUM(SALARY)           "월급 합",
+       ROUND(AVG(SALARY), 3) "월급 평균"
 FROM   EMPLOYEES
 WHERE  DEPARTMENT_ID != 50 and DEPARTMENT_ID != 60 and DEPARTMENT_ID != 80;
+
+SELECT COUNT(DEPARTMENT_ID)  "인원 수",
+       SUM(SALARY)           "월급 합",
+       ROUND(AVG(SALARY), 3) "월급 평균"
+FROM   EMPLOYEES
+WHERE  DEPARTMENT_ID NOT IN (50, 60, 80);
+
+----------------------------------------------------
+부서별 사원수

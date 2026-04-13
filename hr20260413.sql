@@ -142,3 +142,55 @@ VARIABLE O_CUR REFCURSOR;
 EXECUTE  GET_EMPLIST(50, :O_CUR)
 PRINT    O_CUR;
 
+
+-----------------------------------------------------------------------------
+DDL : data definition language
+구조를 생성, 변경, 제거
+
+CREATE 
+ALTER
+DROP
+
+계정생성
+아이디 : SKY
+비밀번호 : 1234
+
+cmd 실행
+
+Microsoft Windows [Version 10.0.19045.6218]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\GGG>sqlplus /nolog
+
+SQL> conn /as sysdba
+연결되었습니다.
+
+SQL> show user
+USER은 "SYS"입니다
+
+SQL> alter session set "_ORACLE_SCRIPT"=true;
+
+세션이 변경되었습니다.
+
+SQL> create user SKY identifeid by 1234;
+create user SKY identifeid by 1234
+                *
+1행에 오류:
+ORA-00922: 누락된 또는 부적합한 옵션
+
+
+SQL> create user SKY identified by 1234;
+
+사용자가 생성되었습니다.
+
+SQL> grant connect, resource to SKY;
+
+권한이 부여되었습니다.
+
+SQL> alter user SKY default tablespace users quota unlimited on users;
+
+사용자가 변경되었습니다.
+
+----------------------------------------------------------------------
+새 계정으로 접속 한 뒤에 작업
+

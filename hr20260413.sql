@@ -34,7 +34,10 @@ BEGIN
 END;
 /
 
+-- ORACLE 로 프로시저를 생성한다
 저장 프로시저 (IN : INPUT, OUT : OUTPUT, INOUT : INPUT-OUTPUT)
+파라미터( IN_EMPID IN NUMBER )는 괄호와 숫자를 사용하지 않는다
+내부 변수( V_NAME VARCHAR2(숫자) )는 반드시 괄호와 숫자가 필요하다
 CREATE PROCEDURE GET_EMPSAL (IN_EMPID IN NUMBER)
 IS
   V_NAME   VARCHAR2(46);
@@ -50,26 +53,92 @@ IS
   END;
 /
 
+테스트
+SET   SERVEROUTPUT ON; -- DBMS_OUTPUT.PUT_LINE() 의 결과를 화면에 출력
+CALL GET_EMPSAL( 107 );
 
-
-
--- ORACLE 로 프로시저를 생성한다
-
-
+----------------------------------------------------------------------
 
 -- 부서번호입력, 해당 부서의 최고 월급자의 이름, 월급 출력
-SELECT DEPARTMENT_ID                  부서,
-       FIRST_NAME || ' ' || LAST_NAME 이름,
-       MAX(SALARY)                    월급
-FROM   EMPLOYEES
-WHERE  DEPARTMENT_ID = 50;
+CREATE OR REPLACE PROCEDURE GET_NAME_MAXSAL(
+    IN_DEPTID   IN   NUMBER,
+    O_NAME      OUT  VARCHAR2,
+    O_SAL       OUT  NUMBER   
+)
+IS
+    V_MAXSAL NUMBER(8, 2);
+  BEGIN
+    SELECT MAX(SALARY)
+    INTO   V_MAXSAL
+    FROM   EMPLOYEES
+    WHERE  DEPARTMENT_ID = IN_DEPTID;
+    
+    SELECT FIRST_NAME || ' ' || LAST_NAME, SALARY
+    INTO   O_NAME,                         O_SAL
+    FROM   EMPLOYEES
+    WHERE  SALARY         = V_MAXSAL
+    AND    DEPARTMENT_ID  = IN_DEPTID;
+    
+    DBMS_OUTPUT.PUT_LINE(O_NAME);
+    DBMS_OUTPUT.PUT_LINE(O_SAL);
+  END;
+/
+
+테스트 : 90, 60, 50 - 결과가 한 줄일 때 문제 없음
+SET  SERVEROUTPUT ON;
+VAR  O_NAME VARCHAR2;
+VAR  O_SAL NUMBER;
+CALL GET_NAME_MAXSAL(110, :O_NAME, :O_SAL);
+PRINT O_NAME;
+PRINT O_SAL;
+--> JAVA 에서 호출해 사용
+
+-- 90번 부서번호입력, 직원들 출력 : 결과가 여러 줄 일 때 에러 발생
+CREATE OR REPLACE PROCEDURE GETEMPLIST( IN_DEPTID NUMBER )
+IS
+    V_EMPID NUMBER(6);
+    V_FNAME VARCHAR2(20);
+    V_LNAME VARCHAR2(25);
+    V_PHONE VARCHAR2(20);
+  BEGIN
+    SELECT  EMPLOYEE_ID, FIRST_NAME, LAST_NAME, PHONE_NUMBER
+    INTO    V_EMPID,     V_FNAME,    V_LNAME,   V_PHONE
+    FROM    EMPLOYEES
+    WHERE   DEPARTMENT_ID = IN_DEPTID;
+    
+    DBMS_OUTPUT.PUT_LINE(V_EMPID);
+  END;
+/
+
+--테스트
+SET     SERVEROUTPUT ON;
+EXECUTE GETEMPLIST(90);
+오류 발생 행: 1:
+ORA-01422: 실제 인출은 요구된 것보다 많은 수의 행을 추출합니다
+ORA-06512: "HR.GETEMPLIST",  8행
+ORA-06512:  1행
+결과가 3줄인데 한 번만 출력했음
+*** SELECT INTO 는 결과가 한 줄일 때만 사용 가능
 
 
+해결책) 커서(CURSOR) 사용
+-- 정상작동
+CREATE OR REPLACE PROCEDURE GET_EMPLIST(
+    IN_DEPTID  IN   NUMBER,
+    O_CUR      OUT  SYS_REFCURSOR )
+IS
+  BEGIN
+  
+    OPEN O_CUR FOR
+        SELECT  EMPLOYEE_ID, FIRST_NAME, LAST_NAME, PHONE_NUMBER
+        FROM    EMPLOYEES
+        WHERE   DEPARTMENT_ID = IN_DEPTID;
+    
+  END;
+/
 
+--테스트
+VARIABLE O_CUR REFCURSOR;
+EXECUTE  GET_EMPLIST(50, :O_CUR)
+PRINT    O_CUR;
 
-
--- 90번 부서번호입력, 직원들 출력
-SELECT DEPARTMENT_ID                  부서,
-       FIRST_NAME || ' ' || LAST_NAME 이름
-FROM   EMPLOYEES
-WHERE  DEPARTMENT_ID = 90;

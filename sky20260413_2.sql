@@ -32,12 +32,187 @@
         INDATE  DATE         DEFAULT SYSDATE -- 입학일 날짜 기본 값 오늘
  );
  
+ -- 학생 정보 입력
+ INSERT INTO STUDENT (STID, STNAME, PHONE, INDATE)
+ VALUES              (1,    '가나', '010', SYSDATE);
+ 
+ INSERT INTO STUDENT
+ VALUES              (2,    '나나', '011', SYSDATE);
+ 
+ INSERT INTO STUDENT (STID, STNAME, PHONE)
+ VALUES              (3,    '다나', '012');
+ 
+ INSERT INTO STUDENT (STID, STNAME, PHONE)
+ VALUES              (4,    '라나', '013');
+ 
+ INSERT INTO STUDENT (STID, STNAME, PHONE)
+ VALUES              (5,    '라나', '014');
+ 
+  INSERT INTO STUDENT (STID, STNAME, PHONE)
+ VALUES              (5,    '라나', '014'); -- 입력 안됨, 기본키는 중복이 안 됨
+ -- ORA-00001: 무결성 제약 조건(SKY.SYS_C008381)에 위배됩니다 
+ 
+ INSERT INTO STUDENT (STID, STNAME, PHONE) -- 입력안됨
+ VALUES              (null,    '사나', '015'); 
+ -- SQL 오류: ORA-01400: NULL을 ("SKY"."STUDENT"."STID") 안에 삽입할 수 없습니다 PRIMARY KEY 
+ 
+ INSERT INTO STUDENT (STID, STNAME, PHONE)
+ VALUES              (6,    '하나', '014'); -- 입력 안됨, PHONE 중복
+ -- ORA-00001: 무결성 제약 조건(SKY.SYS_C008382)에 위배됩니다
+ 
+ INSERT INTO STUDENT (STID, STNAME, PHONE)
+ VALUES              (7,    null,   '018'); -- STNAME NOT NULL 제약조건 위반
+ -- SQL 오류: ORA-01400: NULL을 ("SKY"."STUDENT"."STNAME") 안에 삽입할 수 없습니다
+ 
+ COMMIT;
+ 
+ INSERT INTO STUDENT (STID, STNAME, PHONE)
+ VALUES              (6,    '하나',   '019');
+ 
+ SELECT * FROM STUDENT;
+ 
+
  성적     : 일련번호(PK), 교과목,   점수,   학번(FK)
  SCORES     SCID          SUBJECT   SCORE   STID  
  
  CREATE TABLE SCORES(
-        SCID    NUMBER(7)    PRIMARY KEY,  -- 일련번호  숫자(7)   기본키, 번호 자동 증가
-        SUBJECT VARCHAR2(60) NOT NULL,     -- 교과목    문자(60)  필수입력
-        SCORE NUMBER(3), -- 점수 숫자(3) 범위 0~100
-        STID NUMBER(6) -- 학번 숫자(6) 외래키
- )
+        SCID    NUMBER(7)      NOT NULL,                        -- 일련번호  숫자(7)   기본키, 번호 자동 증가
+        SUBJECT VARCHAR2(60)   NOT NULL,                        -- 교과목    문자(60)  필수입력
+        SCORE   NUMBER(3)      CHECK(SCORE BETWEEN 0 AND 100),  -- 점수 숫자(3) 범위 0~100
+        STID    NUMBER(6),                                      -- 학번 숫자(6) 외래키
+        CONSTRAINT SCID_PK PRIMARY KEY (SCID, SUBJECT),
+        CONSTRAINT STID_FK FOREIGN KEY (STID) REFERENCES STUDENT (STID)
+ );
+ 
+INSERT INTO SCORES (SCID, SUBJECT, SCORE, STID)
+ VALUES             (1,    '국어',  100, 1);
+ 
+INSERT INTO SCORES VALUES (2,  '영어', 100, 1);
+INSERT INTO SCORES VALUES (3,  '수학', 100, 1);
+INSERT INTO SCORES VALUES (4,  '국어', 100, 2);
+INSERT INTO SCORES VALUES (5,  '수학',  80, 2);
+INSERT INTO SCORES VALUES (6,  '국어',  70, 4);
+INSERT INTO SCORES VALUES (7,  '영어',  80, 4);
+INSERT INTO SCORES VALUES (8,  '수학',  85, 4);
+INSERT INTO SCORES VALUES (9,  '국어',  805, 5); -- ORA-02290: 체크 제약조건(SKY.SYS_C008390)이 위배되었습니다
+INSERT INTO SCORES VALUES (10, '영어',  100, 8); -- ORA-02291: 무결성 제약조건(SKY.STID_FK)이 위배되었습니다- 부모 키가 없습니다
+
+--------------------------------------------------------------------------------
+DML 추가, 수정, 삭제 -- COMMIT 필수
+
+1. INSERT(추가) - 줄(DATA) 추가
+    1) INSERT INTO SCORES (SCID, SUBJECT, SOCRE, STID) 
+       VALUES             (1,    '국어',  100,   1);
+       
+    2) 여러 줄 추가
+       INSERT INTO EMP4
+       SELECT * FROM hr.EMPLOYEES;
+       
+    3) INSERT 문 여러개를 한 번에 실행 - 여러 줄 추가 : 새로운 문법
+       CREATE TABLE EX_SKY (
+            ID   NUMBER(7)    PRIMARY KEY,
+            NAME VARCHAR2(30) NOT NULL
+       );
+       INSERT ALL 
+       INTO   EX_SKY VALUES (103, '이순신')
+       INTO   EX_SKY VALUES (104, '김유신')
+       INTO   EX_SKY VALUES (105, '강감찬')
+       SELECT * FROM DUAL;
+       COMMIT;
+
+2. DELETE -- 줄(DATA) 을 삭제한다, 기본적으로 여러 줄이 대상, WHERE이 없으면 전체를 대상으로 작업됨
+DELETE
+FROM   테이블명
+WHERE  조건;
+
+3. UPDATE -- 줄에 변화는 없고 칸에 있는 정보만 수정, WHERE이 없으면 전체를 대상으로 작업됨
+        UPDATE 테이블
+        SET    칼럼1 = 고칠 값1,
+               칼럼2 = 고칠 값2,
+               칼럼3 = 고칠 값3
+        WHERE  조건;
+        
+        SELECT * FROM SCORES;
+        
+        ROLLBACK;
+        
+        UPDATE SCORES
+        SET    SCORE = 70
+        WHERE  SCID = 6;
+        
+--------------------------------------------------------------------------------
+DATA 제거
+1. DROP TABLE SCORES;     -- 구조(테이블), DATA 모두 삭제, 복구 불가능
+
+2. TRUNCATE TABLE SCORES; -- 구조(테이블)는 남기고 DATA만 삭제, 속도 빠름
+
+3. DELETE FROM SCORES;    -- 구조(테이블)는 남기고 DATA만 삭제, 속도 느림
+
+SCORES DATA 삭제
+
+-- SET-TIMING ON
+
+SELECT * FROM SCORES;
+DELETE FROM SCORES;
+ROLLBACK;
+
+SELECT * FROM STUDENT;
+DELETE FROM STUDENT;  --ORA-02292: 무결성 제약조건(SKY.STID_FK)이 위배되었습니다- 자식 레코드가 발견되었습니다
+
+INSERT INTO STUDENT VALUES (11, '히나', '0111', SYSDATE);
+COMMIT;
+
+DELETE FROM STUDENT
+WHERE  STID = 1; -- ORA-02292: 무결성 제약조건(SKY.STID_FK)이 위배되었습니다- 자식 레코드가 발견되었습니다
+
+DELETE FROM STUDENT
+WHERE  STID = 11;
+
+외래키 관계에서 자식테이블의 DATA를 지우고 부모테이블의 DATA를 삭제하면 된다
+DELETE FROM SCORES
+WHERE  STID = 1;
+
+DELETE FROM STUDENT
+WHERE  STID = 1;
+
+DROP TABLE SCORES;
+DROP TABLE STUDENT;
+
+------------------------------------------------------------------
+
+
+ 성적처리 TABLE
+ 업무
+ 학생 : 학번, 이름, 전화, 입학일
+ 성적 : 학번, 이름, 국어, 영어, 수학, 총점, 평균, 석차 결과
+ 과목은 변경될 수 있다.
+ 
+------------------------------------------------------------------
+ -- 조회
+ -- 1. 학번, 이름, 점수(국어)
+ SELECT s.STID   학번, 
+        s.STNAME 이름, 
+        c.SCORE  "점수(국어)"
+ FROM   STUDENT s JOIN SCORES c ON s.STID = c.STID
+ WHERE  SUBJECT = '국어';
+ 
+ -- 2. 학번, 이름, 총점, 평균
+ SELECT    STID       학번,
+           SUM(SCORE) 총점,
+           ROUND(AVG(SCORE), 2) 평균
+  FROM     SCORES
+  GROUP BY STID;
+
+ SELECT s.STID       학번, 
+        s.STNAME     이름, 
+        c.SUM(SCORE) 총점, 
+        c.AVG(SCORE) 평균
+ FROM   STUDENT s JOIN SCORES c ON s.STID = c.STID
+ GROUP BY s.STID;
+ 
+
+ 
+ -- 3. 모든 학생의 학번, 이름, 총점, 평균
+ -- 점수가 null인 학생은 '미응시'
+ 
+ -- 4. 모든 학생의 학번, 이름, 총점, 평균, 등급, 석차

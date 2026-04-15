@@ -21,7 +21,13 @@
   4. CHECK           : 값의 범위지정 , DOMAIN 제약 조건 
   5. FOREIGN KEY     : 외래키 제약조건
 
+-- 관계가 설정된 테이블 삭제방법 1
+DROP TABLE SCORES;  -- 자식 테이블을 먼저 삭제
+DROP TABLE STUDENT; -- 부모테이블을 나중에 삭제
 
+-- 관계가 설정된 테이블 삭제방법 2
+DROP TABLE STUDENT CASCADE CONSTRAINTS PURGE; -- 순서와 무관하게 삭제 가능
+DROP TABLE SCORES;
 
  학생     : 학번(PK), 이름,   전화,   입학일
  STUDENT    STID      STNAME  PHONE   INDATE
@@ -188,31 +194,72 @@ DROP TABLE STUDENT;
  과목은 변경될 수 있다.
  
 ------------------------------------------------------------------
+학생
+SELECT * FROM student;
+SELECT * FROM SCORES;
+
  -- 조회
  -- 1. 학번, 이름, 점수(국어)
- SELECT s.STID   학번, 
-        s.STNAME 이름, 
-        c.SCORE  "점수(국어)"
- FROM   STUDENT s JOIN SCORES c ON s.STID = c.STID
+ SELECT st.STID   학번, 
+        st.STNAME 이름, 
+        sc.SCORE  "점수(국어)"
+ FROM   STUDENT st , SCORES sc
+ WHERE st.STID = sc.STID(+)
+ ORDER BY st.STID ASC;
+
+ SELECT st.STID   학번, 
+        st.STNAME 이름, 
+        sc.SCORE  "점수(국어)"
+ FROM   STUDENT st JOIN SCORES sc ON st.STID = sc.STID
  WHERE  SUBJECT = '국어';
+
  
  -- 2. 학번, 이름, 총점, 평균
- SELECT    STID       학번,
-           SUM(SCORE) 총점,
-           ROUND(AVG(SCORE), 2) 평균
-  FROM     SCORES
-  GROUP BY STID;
+ SELECT    st.STID                   학번,
+           st.STNAME                 이름,
+           SUM(sc.SCORE)             총점,
+           ROUND(AVG(sc.SCORE), 2)   평균
+  FROM     STUDENT st, SCORES sc
+  WHERE    st.STID = sc.STID(+)
+  GROUP BY st.STID, st.STNAME
+  ORDER BY st.STID ASC, st.STNAME;
 
- SELECT s.STID       학번, 
-        s.STNAME     이름, 
-        c.SUM(SCORE) 총점, 
-        c.AVG(SCORE) 평균
- FROM   STUDENT s JOIN SCORES c ON s.STID = c.STID
- GROUP BY s.STID;
+ SELECT    st.STID                   학번,
+           st.STNAME                 이름,
+           SUM(sc.SCORE)             총점,
+           ROUND(AVG(sc.SCORE), 2)   평균
+  FROM     STUDENT st LEFT JOIN SCORES sc 
+  ON       st.STID = sc.STID
+  GROUP BY st.STID, st.STNAME
+  ORDER BY st.STID ASC, st.STNAME;
  
-
  
  -- 3. 모든 학생의 학번, 이름, 총점, 평균
  -- 점수가 null인 학생은 '미응시'
- 
+ SELECT    st.STID                                    학번,
+           st.STNAME                                  이름,
+           DECODE(SUM(sc.SCORE), null, '미응시', ' ') 총점,
+           CASE 
+                WHEN ROUND(AVG(sc.SCORE), 2) IS NULL  THEN '미응시'
+                ELSE TO_CHAR(AVG(sc.SCORE), '999.00')
+           END 평균          
+  FROM     STUDENT st, SCORES sc
+  WHERE    st.STID = sc.STID(+)
+  GROUP BY st.STID, st.STNAME
+  ORDER BY st.STID ASC, st.STNAME;
+  
+SELECT  학번, 이름,
+        DECODE(총점, NULL, '미응시', TO_CHAR(총점, '990'))    총점,
+        DECODE(평균, NULL, '미응시', TO_CHAR(평균, '990.00')) 평균
+FROM
+    (
+ SELECT    st.STID                   학번,
+           st.STNAME                 이름,
+           SUM(sc.SCORE)             총점,
+           ROUND(AVG(sc.SCORE), 2)   평균
+  FROM     STUDENT st LEFT JOIN SCORES sc 
+  ON       st.STID = sc.STID
+  GROUP BY st.STID, st.STNAME
+  ORDER BY st.STID ASC, st.STNAME
+     ); 
  -- 4. 모든 학생의 학번, 이름, 총점, 평균, 등급, 석차

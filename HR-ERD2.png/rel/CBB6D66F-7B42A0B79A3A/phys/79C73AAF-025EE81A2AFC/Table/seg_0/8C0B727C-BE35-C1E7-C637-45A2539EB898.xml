@@ -1,0 +1,28 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="SALGRADE" directorySegmentName="seg_0" id="8C0B727C-BE35-C1E7-C637-45A2539EB898">
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:58:03 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<schemaObject>5CA2CE2D-9F7F-8BF3-3425-AED798392193</schemaObject>
+<logging>YES</logging>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>10D09E38-1097-66C1-9F1C-1DC759610106</segment>
+<tableSpace>F990A596-E634-68D8-C182-7A9A69A91599</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="SALGRADE_PK" id="BF38EF8A-E86D-89E5-E6D0-F6A995B117CB">
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:58:03 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<schemaObject>5CA2CE2D-9F7F-8BF3-3425-AED798392193</schemaObject>
+<segment>2A25684B-0F5C-2DDB-9F8D-F582E386A6A2</segment>
+<tableSpace>F990A596-E634-68D8-C182-7A9A69A91599</tableSpace>
+<indexSegment>2A25684B-0F5C-2DDB-9F8D-F582E386A6A2</indexSegment>
+<indexSort>SORTED</indexSort>
+<usingIndex>BY INDEX NAME</usingIndex>
+</PrimaryKey>
+</primaryKeys>
+</TableProxyOraclev12c>

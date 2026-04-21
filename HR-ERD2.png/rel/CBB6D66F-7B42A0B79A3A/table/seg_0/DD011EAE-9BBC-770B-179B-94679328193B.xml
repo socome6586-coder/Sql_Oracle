@@ -1,0 +1,140 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="DD011EAE-9BBC-770B-179B-94679328193B" schemaObject="5CA2CE2D-9F7F-8BF3-3425-AED798392193" name="JOB_HISTORY">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>JOB_HISTORY</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:42 UTC</createdTime>
+<commentInRDBMS><![CDATA[Table that stores job history of the employees. If an employee
+changes departments within the job or changes jobs within the department,
+new rows get inserted into this table with old job information of the
+employee. Contains a complex primary key: employee_id+start_date.
+References with jobs, employees, and departments tables.]]></commentInRDBMS>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="09C3176A-85C7-0B36-C226-AE250A701DE9" name="JHIST_EMP_ID_ST_DATE_PK">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>JHIST_EMP_ID_ST_DATE_PK</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:42 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<pk>true</pk>
+<indexExpression>EMPLOYEE_ID,START_DATE</indexExpression>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+<ind_PK_UK id="24A69040-C77A-548F-46A0-D6EB2349073C" schemaObject="5CA2CE2D-9F7F-8BF3-3425-AED798392193" name="JHIST_DEPARTMENT_IX">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>JHIST_DEPARTMENT_IX</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:42 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<indexExpression>DEPARTMENT_ID</indexExpression>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+<ind_PK_UK id="C57F5ADE-A0C7-1366-7017-F77C5FE6E229" schemaObject="5CA2CE2D-9F7F-8BF3-3425-AED798392193" name="JHIST_EMPLOYEE_IX">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>JHIST_EMPLOYEE_IX</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:42 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<indexExpression>EMPLOYEE_ID</indexExpression>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+<ind_PK_UK id="2467DA86-6E01-352E-1690-29B30E71EB10" schemaObject="5CA2CE2D-9F7F-8BF3-3425-AED798392193" name="JHIST_EMP_ID_ST_DATE_PK">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>JHIST_EMP_ID_ST_DATE_PK</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:42 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<indexExpression>EMPLOYEE_ID, START_DATE</indexExpression>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+<ind_PK_UK id="4DA1DD15-7815-9996-14FB-4968518C28D3" schemaObject="5CA2CE2D-9F7F-8BF3-3425-AED798392193" name="JHIST_JOB_IX">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>JHIST_JOB_IX</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:42 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<indexExpression>JOB_ID</indexExpression>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+<ind_PK_UK id="46FEB8D1-F0AB-6AC8-E47E-696A5E08D4C2" name="JHIST_DEPT_FK">
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:42 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+<ind_PK_UK id="D83BA2BE-E7D4-2434-C933-7D552FF5D527" name="JHIST_EMP_FK">
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:42 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+<ind_PK_UK id="0C20B087-11BE-D2CF-5E75-4ADCC8D94B20" name="JHIST_JOB_FK">
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:42 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+</indexes>
+<tableCheckConstraints itemClass="oracle.dbtools.crest.model.design.constraint.TableLevelConstraint">
+<tableCheckConstraint name="JHIST_DATE_INTERVAL" directorySegmentName="seg_0" id="33A70ED6-A5A8-0797-9CDD-80EF00D3ECE9">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>JHIST_DATE_INTERVAL</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:42 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<rule><![CDATA[end_date > start_date]]></rule>
+</tableCheckConstraint>
+<tableCheckConstraint name="JHIST_EMPLOYEE_NN" directorySegmentName="seg_0" id="369BFDDB-48B0-7653-8089-8AB5E547B376">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>JHIST_EMPLOYEE_NN</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:42 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<rule><![CDATA["EMPLOYEE_ID" IS NOT NULL]]></rule>
+</tableCheckConstraint>
+<tableCheckConstraint name="JHIST_END_DATE_NN" directorySegmentName="seg_0" id="A1BD710A-BB8A-89CC-7BAA-89EAA4FD93FD">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>JHIST_END_DATE_NN</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:42 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<rule><![CDATA["END_DATE" IS NOT NULL]]></rule>
+</tableCheckConstraint>
+<tableCheckConstraint name="JHIST_JOB_NN" directorySegmentName="seg_0" id="61BDCE1A-40A0-15A7-0095-63C6F1AEC3C1">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>JHIST_JOB_NN</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:42 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<rule><![CDATA["JOB_ID" IS NOT NULL]]></rule>
+</tableCheckConstraint>
+<tableCheckConstraint name="JHIST_START_DATE_NN" directorySegmentName="seg_0" id="3F8CEA76-C31D-6224-6DBC-4D7F3ED44BA1">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>JHIST_START_DATE_NN</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:42 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<rule><![CDATA["START_DATE" IS NOT NULL]]></rule>
+</tableCheckConstraint>
+</tableCheckConstraints>
+</Table>

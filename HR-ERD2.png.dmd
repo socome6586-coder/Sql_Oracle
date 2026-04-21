@@ -1,0 +1,8 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<OSDM_Design class="oracle.dbtools.crest.model.design.Design" name="HR-ERD2.png" id="0CB7ED56-F3BD-5852-A8E1-8BF33C7FF2E1" version="3.5">
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:49:33 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<capitalNames>false</capitalNames>
+<designId>0CB7ED56-F3BD-5852-A8E1-8BF33C7FF2E1</designId>
+</OSDM_Design>

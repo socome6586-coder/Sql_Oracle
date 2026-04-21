@@ -1,0 +1,43 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<TableProxyOraclev12c class="oracle.dbtools.crest.model.design.storage.oracle.v12c.TableProxyOraclev12c" name="COUNTRIES" directorySegmentName="seg_0" id="A1810FA8-7D1F-2253-8C72-BF6DCD426783">
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:02 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<schemaObject>5CA2CE2D-9F7F-8BF3-3425-AED798392193</schemaObject>
+<iotPctThreshold>50</iotPctThreshold>
+<logging>YES</logging>
+<organization>INDEX</organization>
+<partitionedRowMovement>DISABLE</partitionedRowMovement>
+<segment>2A25684B-0F5C-2DDB-9F8D-F582E386A6A2</segment>
+<tableSpace>F990A596-E634-68D8-C182-7A9A69A91599</tableSpace>
+<temporaryChanged>false</temporaryChanged>
+<accessDriverType>oracle_loader</accessDriverType>
+<rejectLimit></rejectLimit>
+<inMemory>NO</inMemory>
+<foreignKeys>
+<ForeignKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.FKProxyOraclev10g" name="COUNTR_REG_FK" id="492832AD-B112-7A44-7096-8D9CA37A32BE">
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:02 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+</ForeignKey>
+</foreignKeys>
+<primaryKeys>
+<PrimaryKey class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PKProxyOraclev10g" name="COUNTRY_C_ID_PK" id="BD7C52E0-5F1D-570C-B307-0AC5431A5D85">
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:02 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<schemaObject>5CA2CE2D-9F7F-8BF3-3425-AED798392193</schemaObject>
+<segment>2A25684B-0F5C-2DDB-9F8D-F582E386A6A2</segment>
+<tableSpace>F990A596-E634-68D8-C182-7A9A69A91599</tableSpace>
+<indexSegment>2A25684B-0F5C-2DDB-9F8D-F582E386A6A2</indexSegment>
+<indexSort>SORTED</indexSort>
+</PrimaryKey>
+</primaryKeys>
+<tableCheckConstraints itemClass="oracle.dbtools.crest.model.design.storage.oracle.TableCheckConstraintOracle">
+<TableCheckConstraint name="COUNTRY_ID_NN" id="EF2FAAB8-A43E-1252-CE25-906015671821">
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:02 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+</TableCheckConstraint>
+</tableCheckConstraints>
+</TableProxyOraclev12c>

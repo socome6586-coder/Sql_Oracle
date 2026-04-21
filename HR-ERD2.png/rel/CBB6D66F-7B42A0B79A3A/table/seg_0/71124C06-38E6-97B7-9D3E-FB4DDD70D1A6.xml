@@ -1,0 +1,12 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="71124C06-38E6-97B7-9D3E-FB4DDD70D1A6" schemaObject="5CA2CE2D-9F7F-8BF3-3425-AED798392193" name="EX4_1">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>EX4_1</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:29 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+</Table>

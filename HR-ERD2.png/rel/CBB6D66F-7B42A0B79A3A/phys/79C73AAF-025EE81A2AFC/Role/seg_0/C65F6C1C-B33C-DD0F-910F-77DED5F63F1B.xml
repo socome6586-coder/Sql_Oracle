@@ -1,0 +1,17 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<RoleOraclev10g class="oracle.dbtools.crest.model.design.storage.oracle.v10g.RoleOraclev10g" name="SKY" directorySegmentName="seg_0" id="C65F6C1C-B33C-DD0F-910F-77DED5F63F1B">
+<sourceConnName>hr</sourceConnName>
+<sourceObjName>SKY</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:16 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<permissions>
+<Permission class="oracle.dbtools.crest.model.design.storage.oracle.v10g.PermissionsOraclev10g" name="Permissions1" id="D9F80137-D65F-A8E1-6B31-EBAF89968C1E">
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:16 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<privileges>SELECT</privileges>
+<table>9CD1C2CB-5AFD-E408-7704-CC97BD9A2411</table>
+</Permission>
+</permissions>
+</RoleOraclev10g>

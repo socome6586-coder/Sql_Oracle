@@ -1,0 +1,74 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="3F72B3AA-D5BC-8BDF-5845-85FB1B93241A" schemaObject="5CA2CE2D-9F7F-8BF3-3425-AED798392193" name="DEPARTMENTS">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>DEPARTMENTS</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:11 UTC</createdTime>
+<commentInRDBMS><![CDATA[Departments table that shows details of departments where employees
+work. references with locations, employees, and job_history tables.]]></commentInRDBMS>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="9829F990-7068-90AB-8938-123DE5D46C5B" name="DEPT_ID_PK">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>DEPT_ID_PK</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:11 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<pk>true</pk>
+<indexExpression>DEPARTMENT_ID</indexExpression>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+<ind_PK_UK id="716F046B-3FC6-FBFA-6D74-E6258F94201A" schemaObject="5CA2CE2D-9F7F-8BF3-3425-AED798392193" name="DEPT_ID_PK">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>DEPT_ID_PK</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:11 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<indexExpression>DEPARTMENT_ID</indexExpression>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+<ind_PK_UK id="AF27B001-9B0A-1207-AD7D-2D65AD1FEFE5" schemaObject="5CA2CE2D-9F7F-8BF3-3425-AED798392193" name="DEPT_LOCATION_IX">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>DEPT_LOCATION_IX</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:11 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<indexExpression>LOCATION_ID</indexExpression>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+<ind_PK_UK id="61A242B3-8296-0135-CD07-65CC9091120E" name="DEPT_LOC_FK">
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:11 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+<ind_PK_UK id="75F3ACA0-63DC-D644-1B0C-09CB23A11E61" name="DEPT_MGR_FK">
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:11 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+</indexes>
+<tableCheckConstraints itemClass="oracle.dbtools.crest.model.design.constraint.TableLevelConstraint">
+<tableCheckConstraint name="DEPT_NAME_NN" directorySegmentName="seg_0" id="10DCEDE5-1360-1831-E82D-1C6AF0D62561">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>DEPT_NAME_NN</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:11 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<rule><![CDATA["DEPARTMENT_NAME" IS NOT NULL]]></rule>
+</tableCheckConstraint>
+</tableCheckConstraints>
+</Table>

@@ -1,0 +1,26 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="8C0B727C-BE35-C1E7-C637-45A2539EB898" schemaObject="5CA2CE2D-9F7F-8BF3-3425-AED798392193" name="SALGRADE">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>SALGRADE</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:58:03 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="BF38EF8A-E86D-89E5-E6D0-F6A995B117CB" schemaObject="5CA2CE2D-9F7F-8BF3-3425-AED798392193" name="SALGRADE_PK">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>SYS_C008351</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:58:03 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<pk>true</pk>
+<indexExpression>GRADE</indexExpression>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+</indexes>
+</Table>

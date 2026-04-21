@@ -1,0 +1,169 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="9CD1C2CB-5AFD-E408-7704-CC97BD9A2411" schemaObject="5CA2CE2D-9F7F-8BF3-3425-AED798392193" name="EMPLOYEES">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>EMPLOYEES</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:16 UTC</createdTime>
+<commentInRDBMS><![CDATA[employees table. References with departments,
+jobs, job_history tables. Contains a self reference.]]></commentInRDBMS>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="E39FE44C-CA7E-89D8-D26C-B8C8E34CB5D1" name="EMP_EMP_ID_PK">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>EMP_EMP_ID_PK</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:16 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<pk>true</pk>
+<indexExpression>EMPLOYEE_ID</indexExpression>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+<ind_PK_UK id="84C54D60-6115-93CD-9DA1-738E390AF56C" name="EMP_EMAIL_UK">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>EMP_EMAIL_UK</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:16 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<indexExpression>EMAIL</indexExpression>
+<indexState>Unique Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+<ind_PK_UK id="2B13B6FE-8FA1-CF45-07FE-C831E8F362D9" schemaObject="5CA2CE2D-9F7F-8BF3-3425-AED798392193" name="EMP_DEPARTMENT_IX">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>EMP_DEPARTMENT_IX</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:16 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<indexExpression>DEPARTMENT_ID</indexExpression>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+<ind_PK_UK id="03546A60-2D01-76F6-21BF-3B24B24D57E4" schemaObject="5CA2CE2D-9F7F-8BF3-3425-AED798392193" name="EMP_EMAIL_UK">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>EMP_EMAIL_UK</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:16 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<indexExpression>EMAIL</indexExpression>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+<ind_PK_UK id="0F43603A-A96E-A8D6-B2A4-B3B30A78CE94" schemaObject="5CA2CE2D-9F7F-8BF3-3425-AED798392193" name="EMP_EMP_ID_PK">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>EMP_EMP_ID_PK</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:16 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<indexExpression>EMPLOYEE_ID</indexExpression>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+<ind_PK_UK id="0F0F6B6A-A058-E00A-42D1-DBE6F4F9D539" schemaObject="5CA2CE2D-9F7F-8BF3-3425-AED798392193" name="EMP_JOB_IX">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>EMP_JOB_IX</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:16 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<indexExpression>JOB_ID</indexExpression>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+<ind_PK_UK id="D7AC4203-BD51-8523-0926-8CD38B11B5C3" schemaObject="5CA2CE2D-9F7F-8BF3-3425-AED798392193" name="EMP_MANAGER_IX">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>EMP_MANAGER_IX</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:16 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<indexExpression>MANAGER_ID</indexExpression>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+<ind_PK_UK id="048E7BCA-E65D-4EC7-913E-28A5D1C313BB" schemaObject="5CA2CE2D-9F7F-8BF3-3425-AED798392193" name="EMP_NAME_IX">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>EMP_NAME_IX</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:16 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<indexExpression>LAST_NAME, FIRST_NAME</indexExpression>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+<ind_PK_UK id="26584349-11ED-0B3A-86B9-BDC4E47C4AF6" name="EMP_DEPT_FK">
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:16 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+<ind_PK_UK id="DB845432-8E95-DD27-3EE9-A79E3C700430" name="EMP_JOB_FK">
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:16 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+<ind_PK_UK id="70C0AB05-2299-81A6-D8A7-94F1E5E81E47" name="EMP_MANAGER_FK">
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:16 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+</indexes>
+<tableCheckConstraints itemClass="oracle.dbtools.crest.model.design.constraint.TableLevelConstraint">
+<tableCheckConstraint name="EMP_EMAIL_NN" directorySegmentName="seg_0" id="BEB03534-5EDB-BD4C-5C66-7B8CB48F5B94">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>EMP_EMAIL_NN</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:16 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<rule><![CDATA["EMAIL" IS NOT NULL]]></rule>
+</tableCheckConstraint>
+<tableCheckConstraint name="EMP_HIRE_DATE_NN" directorySegmentName="seg_0" id="644DC11D-44BE-64C3-66B6-B4E33D43559A">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>EMP_HIRE_DATE_NN</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:16 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<rule><![CDATA["HIRE_DATE" IS NOT NULL]]></rule>
+</tableCheckConstraint>
+<tableCheckConstraint name="EMP_JOB_NN" directorySegmentName="seg_0" id="0233EE57-F409-C922-0878-60628447D727">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>EMP_JOB_NN</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:16 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<rule><![CDATA["JOB_ID" IS NOT NULL]]></rule>
+</tableCheckConstraint>
+<tableCheckConstraint name="EMP_LAST_NAME_NN" directorySegmentName="seg_0" id="4E1351D9-3583-3520-7B2A-83CF18CD5634">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>EMP_LAST_NAME_NN</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:16 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<rule><![CDATA["LAST_NAME" IS NOT NULL]]></rule>
+</tableCheckConstraint>
+<tableCheckConstraint name="EMP_SALARY_MIN" directorySegmentName="seg_0" id="FD069813-004B-832E-22DE-D65EC0B07D0D">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>EMP_SALARY_MIN</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:16 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<rule><![CDATA[salary > 0]]></rule>
+</tableCheckConstraint>
+</tableCheckConstraints>
+</Table>

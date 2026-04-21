@@ -1,0 +1,88 @@
+<?xml version = '1.0' encoding = 'UTF-8'?>
+<Table class="oracle.dbtools.crest.model.design.relational.Table" directorySegmentName="seg_0" id="751B1344-5135-5A29-6259-B82E3AAB111C" schemaObject="5CA2CE2D-9F7F-8BF3-3425-AED798392193" name="LOCATIONS">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>LOCATIONS</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:49 UTC</createdTime>
+<commentInRDBMS><![CDATA[Locations table that contains specific address of a specific office,
+warehouse, and/or production site of a company. Does not store addresses /
+locations of customers. references with the departments and countries tables. ]]></commentInRDBMS>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<allowColumnReorder>false</allowColumnReorder>
+<existDependencyGenerateInDDl>true</existDependencyGenerateInDDl>
+<parsed>true</parsed>
+<indexes itemClass="oracle.dbtools.crest.model.design.relational.Index">
+<ind_PK_UK id="35463063-551B-DDBA-0B4F-13F96785215E" name="LOC_ID_PK">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>LOC_ID_PK</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:49 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<pk>true</pk>
+<indexExpression>LOCATION_ID</indexExpression>
+<indexState>Primary Constraint</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+<ind_PK_UK id="81F44E45-8504-4AE1-2E24-5628D26F64DC" schemaObject="5CA2CE2D-9F7F-8BF3-3425-AED798392193" name="LOC_CITY_IX">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>LOC_CITY_IX</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:49 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<indexExpression>CITY</indexExpression>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+<ind_PK_UK id="226524B1-94A9-4F81-902B-1024B7CA07A3" schemaObject="5CA2CE2D-9F7F-8BF3-3425-AED798392193" name="LOC_COUNTRY_IX">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>LOC_COUNTRY_IX</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:49 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<indexExpression>COUNTRY_ID</indexExpression>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+<ind_PK_UK id="8193D215-179C-A2FE-8BD7-7735F9F4B4ED" schemaObject="5CA2CE2D-9F7F-8BF3-3425-AED798392193" name="LOC_ID_PK">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>LOC_ID_PK</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:49 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<indexExpression>LOCATION_ID</indexExpression>
+<indexState>Unique Plain Index</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+<ind_PK_UK id="A6E3E9ED-B6B0-CD6F-09D5-8BE6F8EC4895" schemaObject="5CA2CE2D-9F7F-8BF3-3425-AED798392193" name="LOC_STATE_PROVINCE_IX">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>LOC_STATE_PROVINCE_IX</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:49 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<indexExpression>STATE_PROVINCE</indexExpression>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+<ind_PK_UK id="03A5C294-BED5-5D4C-B902-972CA0690847" name="LOC_C_ID_FK">
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:49 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<indexState>Foreign Key</indexState>
+<isSurrogateKey>false</isSurrogateKey>
+</ind_PK_UK>
+</indexes>
+<tableCheckConstraints itemClass="oracle.dbtools.crest.model.design.constraint.TableLevelConstraint">
+<tableCheckConstraint name="LOC_CITY_NN" directorySegmentName="seg_0" id="CC7CA468-EA83-3EF4-45D1-429EEE315D78">
+<sourceConnName>hr</sourceConnName>
+<sourceObjSchema>HR</sourceObjSchema>
+<sourceObjName>LOC_CITY_NN</sourceObjName>
+<createdBy>GGG</createdBy>
+<createdTime>2026-04-21 04:57:49 UTC</createdTime>
+<ownerDesignName>HR-ERD2.png</ownerDesignName>
+<rule><![CDATA["CITY" IS NOT NULL]]></rule>
+</tableCheckConstraint>
+</tableCheckConstraints>
+</Table>
